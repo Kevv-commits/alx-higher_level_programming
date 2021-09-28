@@ -1,66 +1,58 @@
 #!/usr/bin/python3
-class Square():
-    '''
-        Defining a Square
-    '''
+"""Square with size"""
+
+
+class Square:
+    """Representation of a square"""
     
     def __init__(self, size=0, position=(0, 0)):
-        '''Initialization of instance attributes
-            Args:
-            size (int): Zero or positve number.
-        '''
+        """Instantiation with optional size and optional position"""
         self.size = size
         self.position = position
-        
-    def area(self):
-        '''Calculates the area
-            Return: The current square area.
-        '''
-        return self.__size * self.__size
 
     @property
     def size(self):
-        return self.__size
+        """Property to retrieve size"""
+        return (self.__size)
     
     @size.setter
     def size(self, value):
-        '''Updating the private attributes
-            Args:
-            value (int): Zero or positve number.
-        '''
-        if not isinstance(value, int):
+        """Property setter to set size"""
+        if type(value) != int:
             raise TypeError("size must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
         
     @property
     def position(self):
-        return self.__position
+        """Property to retrieve position"""
+        return (self.__position)
     
     @position.setter
     def position(self, value):
-        '''Updating the private attributes
-            Args:
-            value (int): tuple of two positve numbers.
-        '''
-        if isinstance(value, tuple) and len(value) == 2:
-            if isinstance(value[0], int) and isinstance(value[1], int):
-                if value[0] >= 0 and value[1] >= 0:
-                    self.__position = value
-                    return
-                raise TypeError("position must be a tuple of 2 positive integers")
-            
-    def my_print(self):
-        '''
-            prints in stdout the square with the character # or a new line
-            is size is zero.
-        '''
-        if self.__size == 0:
-            print()
-            return
+        """Property setter to set position"""
+        if ((type(value) != tuple) or (len(value) != 2) or
+            (type(value[0]) != int) or (value[0] < 0) or
+            (type(value[1]) != int) or (value[1] < 0)):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__position = value
         
-        for line in range(self.__position[1]):
-            print()
-            for col in range(self.__size):
-                print("{}{}".format(" " * self.__position[0], "#" * self.__size))
+    def area(self):
+        """Public instance method that returns the current square area"""
+        return self.__size ** 2
+    
+    def my_print(self):
+        """Public instance method that prints the square with char #"""
+        if self.__size == 0:
+            print("")
+            return
+        "Not empty (size != 0)"
+        for new_line in range(self.__position[1]):
+            print("")
+            for row in range(self.__size):
+                for space in range(self.__position[0]):
+                    print(" ", end="")
+                    for column in range(self.__size):
+                        print("#", end="")
+                        print("")
