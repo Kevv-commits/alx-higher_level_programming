@@ -1,58 +1,75 @@
 #!/usr/bin/python3
-"""Square with size"""
+'''
+    Define a class Square
+'''
 
 
-class Square:
-    """Representation of a square"""
-    
+class Square():
+    '''
+        represents a class Square
+    '''
     def __init__(self, size=0, position=(0, 0)):
-        """Instantiation with optional size and optional position"""
+        '''
+        Initialization of objects
+        Args:
+            size(int): size of square, must be integer and greater than zero
+        '''
         self.size = size
         self.position = position
-
+        
+    def area(self):
+        '''
+            define a method to get an area of square class
+        '''
+        return self.__size ** 2
+    
     @property
     def size(self):
-        """Property to retrieve size"""
-        return (self.__size)
-    
+        '''
+        property  to retrieve it
+        '''
+        return self.__size
+
     @size.setter
     def size(self, value):
-        """Property setter to set size"""
-        if type(value) != int:
+        '''
+            property  to set it
+        '''
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
         
     @property
     def position(self):
-        """Property to retrieve position"""
-        return (self.__position)
+        '''
+        property  to retrieve it
+        '''
+        return self.__position
     
     @position.setter
     def position(self, value):
-        """Property setter to set position"""
-        if ((type(value) != tuple) or (len(value) != 2) or
-            (type(value[0]) != int) or (value[0] < 0) or
-            (type(value[1]) != int) or (value[1] < 0)):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = value
-        
-    def area(self):
-        """Public instance method that returns the current square area"""
-        return self.__size ** 2
-    
+        '''
+            property  to sey it
+        '''
+        if isinstance(value, tuple) and len(value) == 2:
+            if isinstance(value[0], int) and isinstance(value[1], int):
+                if value[0] >= 0 and value[1] >= 0:
+                    self.__position = value
+                    return
+                raise TypeError("position must be a tuple of 2 positive integers")
+            
     def my_print(self):
-        """Public instance method that prints the square with char #"""
+        '''
+            prints in stdout the square with the character #
+            print new line if size is zero
+        '''
         if self.__size == 0:
-            print("")
+            print()
             return
-        "Not empty (size != 0)"
-        for new_line in range(self.__position[1]):
-            print("")
-            for row in range(self.__size):
-                for space in range(self.__position[0]):
-                    print(" ", end="")
-                    for column in range(self.__size):
-                        print("#", end="")
-                        print("")
+        
+        for line in range(self.__position[1]):
+            print()
+            for col in range(self.__size):
+                print("{}{}".format(self.__position[0] * " ", "#" * self.__size))
