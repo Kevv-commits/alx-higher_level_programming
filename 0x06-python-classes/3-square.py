@@ -1,19 +1,24 @@
 #!/usr/bin/python3
-"""Square with size"""
+"""
+Define a class Square
+"""
 
 
-class Square:
-    """Representation of a square"""
-    
+class Square():
+    '''
+    This class represents a Square.
+    '''
     def __init__(self, size=0):
-        """Instantiation with optional size"""
-        if type(size) != int:
+        '''
+        Initialization of objects
+        Args:
+            size(int): size of square, must be integer and greater than zero
+        '''
+        if not isinstance(size, int):
             raise TypeError("size must be an integer")
-        elif size < 0:
+        if size < 0:
             raise ValueError("size must be >= 0")
-        else:
-            self.__size = size
-            
+        self.__size = size
+    
     def area(self):
-        """Public instance method that returns the current square area"""
         return self.__size ** 2
