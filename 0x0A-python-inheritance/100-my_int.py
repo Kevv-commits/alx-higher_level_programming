@@ -1,18 +1,30 @@
 #!/usr/bin/python3
 '''
-    Class that takes an integers
+new class to truncate the __eq__ and __ne__ methods
 '''
 
 
 class MyInt(int):
-    def __init__(self, number):
-        self.number = number
+    '''
+    class My int inherite from int
+    '''
 
-    def __ne__(self, val):
-        return (self.number == val)
+    def __init__(self, value):
+        '''
+        initialize the attribute value
+        '''
+        self.value = value
 
-    def __eq__(self, val):
-        return (self.number != val)
+    def __eq__(self, other):
+        '''
+        check the equal value
+        returns false
+        '''
+        return self.value != other
 
-    def __str__(self):
-        return (str(self.number))
+    def __ne__(self, other):
+        '''
+        check the diferent value
+        returns true
+        '''
+        return self.value == other
