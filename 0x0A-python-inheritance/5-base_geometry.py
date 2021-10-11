@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 '''
-    Implementing a Geometry class
+    Class empty
 '''
 
 
-class BaseGeometry:
+class BaseGeometry():
+    '''
+        Represents a BaseGeometry class
+    '''
     pass
