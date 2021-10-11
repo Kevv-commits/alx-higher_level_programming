@@ -1,15 +1,19 @@
 #!/usr/bin/python3
 '''
-    Implementing a Geometry class
+    Class BaseGeometry
 '''
 BaseGeometry = __import__("7-base_geometry").BaseGeometry
 
 
 class Rectangle(BaseGeometry):
     '''
-        Implements a rectangle
+        Represent a class Rectangle heritance from BaseGeometry
     '''
     def __init__(self, width, height):
+        '''
+            define width and height of Rectangle class
+            call the method of the superclass
+        '''
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         
@@ -17,8 +21,14 @@ class Rectangle(BaseGeometry):
         self.__height = height
         
     def area(self):
-        return (self.__width * self.__height)
+        '''
+            method to define the area of rectangle
+        '''
+        return self.__height * self.__width
     
     def __str__(self):
-        return ("[{}] {}/{}".format(type(self).__name__,
-                                    self.__width, self.__height))
+        '''
+        print the rectangle width and height
+        '''
+        return "[{}] {}/{}".format(type(self).__name__,
+                                   self.__width, self.__height)
