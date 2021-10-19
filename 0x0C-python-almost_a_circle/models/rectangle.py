@@ -18,14 +18,12 @@ class Rectangle(Base):
         self.x = x
         self.y = y
         super().__init__(id)
-        
     @property
     def width(self):
         '''
             Returning private attribute
         '''
         return self.__width
-    
     @width.setter
     def width(self, value):
         '''
