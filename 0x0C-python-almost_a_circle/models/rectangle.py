@@ -11,7 +11,6 @@ class Rectangle(Base):
         Inherits from:
             Base
     '''
-
     def __init__(self, width, height, x=0, y=0, id=None):
         self.width = width
         self.height = height
@@ -30,59 +29,51 @@ class Rectangle(Base):
             Setting private attribute
         '''
         self.setter_validation("width", value)
-        self.__width = value
-        
+        self.__width = value       
     @property
     def height(self):
         '''
             Returning private attribute
         '''
         return self.__height
-    
     @height.setter
     def height(self, value):
         '''
             Setting private attribute
         '''
         self.setter_validation("height", value)
-        self.__height = value
-        
+        self.__height = value        
     @property
     def x(self):
         '''
             Returning private attribute
         '''
-        return self.__x
-    
+        return self.__x    
     @x.setter
     def x(self, value):
         '''
             Setting private attribute
         '''
         self.setter_validation("x", value)
-        self.__x = value
-        
+        self.__x = value        
     @property
     def y(self):
         '''
             Returning private attribute
         '''
         return self.__y
-
     @y.setter
     def y(self, value):
         '''
             Setting private attribute
         '''
         self.setter_validation("y", value)
-        self.__y = value
-    
+        self.__y = value    
     def area(self):
         '''
             Returns the area of the rectangle
         '''
         return (self.height * self.width)
-
     def display(self):
         '''
             Prints to stdout the representation of the rectangle
@@ -91,8 +82,7 @@ class Rectangle(Base):
         print("\n" * self.y, end="")
         for i in range(self.height):
             rectangle += (" " * self.x) + ("#" * self.width) + "\n"
-        print(rectangle, end="")
-            
+        print(rectangle, end="")            
     def update(self, *args, **kwargs):
         '''
             Updates the arguments in the class
@@ -108,8 +98,7 @@ class Rectangle(Base):
             self.x = args[3]
             self.y = args[4]
         except IndexError:
-            pass
-        
+            pass        
     def to_dictionary(self):
         '''
             Returns a dictionary representation of this class
@@ -118,8 +107,7 @@ class Rectangle(Base):
                 'y': getattr(self, "y"),
                 'id': getattr(self, "id"),
                 'height': getattr(self, "height"),
-                'width': getattr(self, "width")}
-    
+                'width': getattr(self, "width")}    
     @staticmethod
     def setter_validation(attribute, value):
         if type(value) != int:
@@ -128,8 +116,7 @@ class Rectangle(Base):
             if value < 0:
                 raise ValueError("{} must be >= 0".format(attribute))
         elif value <= 0:
-            raise ValueError("{} must be > 0".format(attribute))
-            
+            raise ValueError("{} must be > 0".format(attribute))            
     def __str__(self):
         '''
             Overwritting the str method
